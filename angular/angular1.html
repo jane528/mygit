@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>angular</title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <!--ng-init命令用于初始化变量，通常情况下不会使用init，而是使用控制器代替-->
+    <!--ng-app指令在网页加载完毕会自动引导应用程序-->
+    <div  ng-controller="myCtrl"
+         ng-init="points=[15,2,6,45];names=[{name:'jani',country:'norway'},{name:'linda',country:'england'}]">
+        <!--数组-->
+        <p>第三个值为<span ng-bind="points[2]|currency"></span></p>
+        <!--
+        ng-model绑定html元素到应用程序
+        为应用程序数据提供状态，为应用程序数据提供状态、为html元素提供CSS类、绑定html元素到html表单
+        -->
+        <p>姓名：<input type="text" ng-model="firstname"> </p>
+        <p>你输入的姓名是：{{firstname}}</p>
+        <!--重复html元素 在重复元素上写ng-repeat-->
+        <ul>
+            <li ng-repeat="x in points">
+                {{x|currency}}
+            </li>
+        </ul>
+        <!--对象数组循环-->
+        <ul>
+            <li ng-repeat="x in names">
+                {{x.name+" "+x.country}}
+            </li>
+        </ul>
+        <guoyi-Directive></guoyi-Directive>
+        <!--验证用户输入-->
+        <form novalidate name="myForm">
+           <!--Emial:
+            <input type="email" name="myAddress" ng-model="text">
+            <span ng-show="myForm.myAddress.$error.email">不是一个合法的邮箱地址</span-->
+            <!--ovalidate 属性在应用中不是必须的，但是你需要在 AngularJS 表单中使用，用于重写标准的 HTML5 验证-->
+            姓名：<input type="text" ng-model="user.name">
+            密码：<input type="text" ng-model="user.password">
+            <h1>
+                <!--
+                ng-valid:验证通过
+                ng-invalid:验证失败
+                ng-dirty:控件输入值已变更
+                ng-touched:控件已失去焦点
+                -->
+                状态
+                {{myForm.myAddress.$valid}}
+                {{myForm.myAddress.$dirty}}
+                {{myForm.myAddress.$touched}}
+            </h1>
+        </form>
+        <p>form={{user}}</p>
+        <button ng-click="sayHello()">点 击</button>
+        <p>{{greeting}}</p>
+    </div>
+    <div ng-controller="myCtrl2">
+        <p ng-show="true">可见</p>
+        <p ng-show="false">不可见</p>
+        <button ng-click="allname()">显示/隐藏</button>
+        <div ng-show="a1">
+            <p>{{f1}}</p>
+            <p>{{f2}}</p>
+        </div>
+    </div>
+    <!--对于 HTML 应用程序，通常建议把所有的脚本都放置在 <body> 元素的最底部。这会提高网页加载速度，因为 HTML 加载不受制于脚本加载。-->
+    <script src="myApp.js"></script>
+    <script src="myCtrl.js"></script>
+</body>
+</html>
