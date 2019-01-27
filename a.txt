@@ -9,4 +9,4 @@ git add 文件名
 git status
 4.将修改的文件暂存
 git add 文件名
-5.aaa
+5.test
