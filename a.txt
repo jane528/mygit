@@ -9,7 +9,8 @@ git add 文件名
 git status
 4.将修改的文件暂存
 git add 文件名
-5.查看文件差异git status 之后：
+5.查看未暂存的文件更新
  git diff
-6.查看两次git add之间的差异
+6.查看已暂存的文件更新
 git diff --cached
+7.
